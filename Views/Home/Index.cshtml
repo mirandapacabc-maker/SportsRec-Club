@@ -1,0 +1,493 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportsRec Club - Tu Club Deportivo & Recreativo</title>
+    
+    <!-- Bootstrap 5 CSS y Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Google Font (Plus Jakarta Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Banner con fondo de Césped Deportivo HD */
+        .hero-banner {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.75) 100%), 
+                        url('https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            padding: 2rem 3rem;
+        }
+
+        /* Navbar Superior */
+        .custom-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            transition: background 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-green-reserve {
+            background-color: #22c55e;
+            color: white !important;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50rem;
+            font-weight: 700 !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-green-reserve:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Text Content */
+        .hero-content {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .club-tag {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1.8px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        /* Quick Action Bar en el Hero */
+        .quick-action-bar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Secciones de Contenido */
+        .main-section {
+            padding: 3rem 3rem 5rem 3rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.25s, box-shadow 0.25s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .filter-btn {
+            border-radius: 50rem;
+            padding: 0.5rem 1.3rem;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #475569;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #0f172a;
+            color: white;
+            border-color: #0f172a;
+        }
+
+        .sidebar-box {
+            background-color: white;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero Banner con Césped Deportivo -->
+    <header class="hero-banner">
+        <!-- Navegación Flotante -->
+        <nav class="custom-navbar">
+            <a href="#" class="brand-logo"><i class="bi bi-trophy-fill text-success"></i> SportsRec Club</a>
+            
+            <div class="nav-links">
+                <a href="#instalaciones">Instalaciones</a>
+                <a href="#torneos">Torneos y Ligas</a>
+                <a href="#membresias">Membresías</a>
+                <button class="icon-btn" title="Modo Oscuro"><i class="bi bi-moon-stars"></i></button>
+                <button class="icon-btn" title="Idioma"><i class="bi bi-globe"></i></button>
+                <button class="btn-green-reserve" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                    <i class="bi bi-calendar-event"></i> Reservar Cancha
+                </button>
+            </div>
+        </nav>
+
+        <!-- Texto Hero Interactivo -->
+        <div class="hero-content ms-md-2">
+            <div class="club-tag"><i class="bi bi-geo-alt-fill"></i> MÉRIDA, YUCATÁN</div>
+            <h1 class="hero-title">Tu Club Deportivo y Recreativo</h1>
+            <p class="hero-subtitle">
+                Disfruta de canchas profesionales de Tenis, Pádel y Fútbol, Alberca Olímpica, Gimnasio y torneos comunitarios exclusivos para socios.
+            </p>
+
+            <!-- Barra de Selección Rápida en el Banner -->
+            <div class="quick-action-bar">
+                <div class="flex-grow-1">
+                    <label class="form-label small fw-bold text-light mb-1">¿Qué deseas practicar hoy?</label>
+                    <select id="quickSportSelect" class="form-select border-0 fw-semibold">
+                        <option value="Tenis">🎾 Cancha de Tenis</option>
+                        <option value="Pádel">🎾 Cancha de Pádel</option>
+                        <option value="Fútbol">⚽ Campo de Fútbol 7</option>
+                        <option value="Natación">🏊 Alberca Olímpica</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="form-label small fw-bold text-light mb-1">Fecha</label>
+                    <input type="date" id="quickDate" class="form-control border-0 fw-semibold" value="2026-10-26">
+                </div>
+                <div class="align-self-end">
+                    <button class="btn btn-success fw-bold px-4 py-2 rounded-3" onclick="openQuickReservation()">
+                        <i class="bi bi-search"></i> Buscar Horario
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Filtros de Instalaciones -->
+    <section id="instalaciones" class="main-section">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+            <div>
+                <h2 class="fw-extrabold fs-2 text-dark mb-1">Nuestras Instalaciones</h2>
+                <p class="text-muted mb-0">Explora los espacios disponibles para reservar y entrenar en el club.</p>
+            </div>
+            
+            <!-- Botones de Filtro -->
+            <div class="d-flex gap-2 flex-wrap">
+                <button class="filter-btn active" onclick="filterCategory('all', this)">Todas</button>
+                <button class="filter-btn" onclick="filterCategory('canchas', this)">Canchas</button>
+                <button class="filter-btn" onclick="filterCategory('piscinas', this)">Piscinas</button>
+                <button class="filter-btn" onclick="filterCategory('fitness', this)">Gimnasio</button>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Columna Principal de Espacios -->
+            <div class="col-lg-8">
+                <div class="row g-4" id="facilitiesContainer">
+                    
+                    <!-- Cancha 1: Pádel -->
+                    <div class="col-md-6 facility-item" data-category="canchas">
+                        <div class="facility-card">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" class="facility-img" alt="Cancha de Pádel">
+                            <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-success-subtle text-success fw-bold px-2.5 py-1">Disponible Hoy</span>
+                                        <span class="fw-extrabold text-success fs-5">$250 / hr</span>
+                                    </div>
+                                    <h4 class="fw-bold mb-1">Canchas de Pádel Pro</h4>
+                                    <p class="text-muted small mb-3"><i class="bi bi-shield-check text-primary"></i> Cristal templado y césped sintético con iluminación LED.</p>
+                                </div>
+                                <button class="btn btn-outline-dark rounded-pill w-100 fw-bold btn-sm py-2" onclick="openModalFor('Pádel Pro')">
+                                    <i class="bi bi-calendar-plus"></i> Reservar Turno
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cancha 2: Tenis -->
+                    <div class="col-md-6 facility-item" data-category="canchas">
+                        <div class="facility-card">
+                            <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=600&q=80" class="facility-img" alt="Cancha de Tenis">
+                            <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-success-subtle text-success fw-bold px-2.5 py-1">Disponible Hoy</span>
+                                        <span class="fw-extrabold text-success fs-5">$300 / hr</span>
+                                    </div>
+                                    <h4 class="fw-bold mb-1">Cancha de Tenis (Arcilla)</h4>
+                                    <p class="text-muted small mb-3"><i class="bi bi-shield-check text-primary"></i> Arcilla roja certificada para torneos oficiales.</p>
+                                </div>
+                                <button class="btn btn-outline-dark rounded-pill w-100 fw-bold btn-sm py-2" onclick="openModalFor('Tenis Arcilla')">
+                                    <i class="bi bi-calendar-plus"></i> Reservar Turno
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cancha 3: Alberca Olímpica -->
+                    <div class="col-md-6 facility-item" data-category="piscinas">
+                        <div class="facility-card">
+                            <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=600&q=80" class="facility-img" alt="Alberca Olímpica">
+                            <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-info-subtle text-info-emphasis fw-bold px-2.5 py-1">Carriles Libres</span>
+                                        <span class="fw-extrabold text-success fs-5">Incluido Socio</span>
+                                    </div>
+                                    <h4 class="fw-bold mb-1">Alberca Olímpica Climatizada</h4>
+                                    <p class="text-muted small mb-3"><i class="bi bi-shield-check text-primary"></i> 8 carriles, sistema de calefacción y salvavidas de planta.</p>
+                                </div>
+                                <button class="btn btn-outline-dark rounded-pill w-100 fw-bold btn-sm py-2" onclick="openModalFor('Alberca Olímpica')">
+                                    <i class="bi bi-calendar-plus"></i> Apartar Carril
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cancha 4: Campo de Fútbol -->
+                    <div class="col-md-6 facility-item" data-category="canchas">
+                        <div class="facility-card">
+                            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80" class="facility-img" alt="Campo de Fútbol">
+                            <div class="p-4 d-flex flex-column flex-grow-1 justify-content-between">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="badge bg-success-subtle text-success fw-bold px-2.5 py-1">Disponible Hoy</span>
+                                        <span class="fw-extrabold text-success fs-5">$400 / hr</span>
+                                    </div>
+                                    <h4 class="fw-bold mb-1">Campo de Fútbol 7 (Césped)</h4>
+                                    <p class="text-muted small mb-3"><i class="bi bi-shield-check text-primary"></i> Pasto natural con mantenimiento profesional diario.</p>
+                                </div>
+                                <button class="btn btn-outline-dark rounded-pill w-100 fw-bold btn-sm py-2" onclick="openModalFor('Fútbol 7')">
+                                    <i class="bi bi-calendar-plus"></i> Reservar Campo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Columna Lateral: Torneos y Noticias -->
+            <div class="col-lg-4">
+                <div class="sidebar-box mb-4">
+                    <h4 class="fw-bold mb-3"><i class="bi bi-trophy-fill text-warning"></i> Próximos Torneos</h4>
+                    <div class="mb-3 p-3 bg-light rounded-3 border">
+                        <span class="badge bg-warning text-dark fw-bold mb-1">Inscripciones Abiertas</span>
+                        <h6 class="fw-bold mb-1">Torneo Abierto de Pádel 2026</h6>
+                        <p class="small text-muted mb-2">Del 10 al 15 de Noviembre • Premios en efectivo.</p>
+                        <button class="btn btn-sm btn-dark w-100 fw-semibold" onclick="alert('¡Inscripción abierta! Acércate a recepción o contáctanos.')">Inscribir mi Pareja</button>
+                    </div>
+                    <div class="p-3 bg-light rounded-3 border">
+                        <span class="badge bg-secondary mb-1">Próximamente</span>
+                        <h6 class="fw-bold mb-1">Copa Infantil de Natación</h6>
+                        <p class="small text-muted mb-0">20 de Noviembre • Categorías 8 a 15 años.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-clock-history text-success"></i> Horarios del Club</h5>
+                    <ul class="list-unstyled small text-muted mb-0">
+                        <li class="d-flex justify-content-between py-2 border-bottom"><span>Lunes a Viernes:</span> <strong class="text-dark">6:00 AM - 10:00 PM</strong></li>
+                        <li class="d-flex justify-content-between py-2 border-bottom"><span>Sábados:</span> <strong class="text-dark">7:00 AM - 8:00 PM</strong></li>
+                        <li class="d-flex justify-content-between pt-2"><span>Domingos:</span> <strong class="text-dark">8:00 AM - 6:00 PM</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Interactivo de Reserva -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header bg-dark text-white rounded-top-4">
+                    <h5 class="modal-header-title fw-bold mb-0" id="modalTitle"><i class="bi bi-calendar-check text-success"></i> Reservar Espacio Deportivo</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="reservationForm" onsubmit="confirmReservation(event)">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Instalación Seleccionada</label>
+                            <input type="text" id="modalFacilityInput" class="form-control fw-bold" readonly>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label fw-bold">Fecha</label>
+                                <input type="date" id="modalDate" class="form-control" required value="2026-10-26">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label fw-bold">Hora de Inicio</label>
+                                <select id="modalTime" class="form-select" required>
+                                    <option value="08:00 AM">08:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                    <option value="08:00 PM">08:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nombre del Socio / Responsable</label>
+                            <input type="text" class="form-control" placeholder="Ej. Miranda Pacab" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Número de Socio / Folio</label>
+                            <input type="text" class="form-control" placeholder="Ej. SOC-9942" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2.5 fw-bold rounded-3 shadow-sm">
+                            Confirmar Reserva Ahora
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts de Interactividad -->
+    <script>
+        // Modal instance
+        let resModal = new bootstrap.Modal(document.getElementById('reservationModal'));
+
+        function openModalFor(facilityName) {
+            document.getElementById('modalFacilityInput').value = facilityName;
+            resModal.show();
+        }
+
+        function openQuickReservation() {
+            const selectedSport = document.getElementById('quickSportSelect').value;
+            const selectedDate = document.getElementById('quickDate').value;
+            document.getElementById('modalFacilityInput').value = selectedSport;
+            document.getElementById('modalDate').value = selectedDate;
+            resModal.show();
+        }
+
+        function confirmReservation(event) {
+            event.preventDefault();
+            const facility = document.getElementById('modalFacilityInput').value;
+            const time = document.getElementById('modalTime').value;
+            const date = document.getElementById('modalDate').value;
+
+            resModal.hide();
+            alert(`¡Reserva Confirmada con Éxito! 🎉\n\nInstalación: ${facility}\nFecha: ${date}\nHora: ${time}\n\nTe esperamos en SportsRec Club.`);
+        }
+
+        // Filtro por categorías
+        function filterCategory(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const items = document.querySelectorAll('.facility-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
